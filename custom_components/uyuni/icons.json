@@ -1,0 +1,10 @@
+{
+  "entity": {
+    "button": {
+      "timer_4h": { "default": "mdi:timer-outline" },
+      "timer_6h": { "default": "mdi:timer-outline" },
+      "timer_8h": { "default": "mdi:timer-outline" },
+      "timer_10h": { "default": "mdi:timer-outline" }
+    }
+  }
+}

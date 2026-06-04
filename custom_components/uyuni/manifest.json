@@ -1,0 +1,12 @@
+{
+  "domain": "uyuni",
+  "name": "Uyuni Tea Lights",
+  "codeowners": ["@hennamann"],
+  "config_flow": true,
+  "dependencies": ["infrared"],
+  "documentation": "https://github.com/hennamann/uyuni-ha",
+  "integration_type": "device",
+  "iot_class": "assumed_state",
+  "issue_tracker": "https://github.com/hennamann/uyuni-ha/issues",
+  "version": "1.0.0"
+}

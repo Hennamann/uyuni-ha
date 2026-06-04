@@ -1,0 +1,28 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "This infrared emitter is already configured for Uyuni Tea Lights.",
+      "no_infrared_entities": "No infrared emitter entities were found. Set up an integration that provides an infrared emitter (for example ESPHome) first."
+    },
+    "step": {
+      "user": {
+        "title": "Set up Uyuni Tea Lights",
+        "description": "Select the infrared emitter that will transmit commands to your Uyuni LED tea lights.",
+        "data": {
+          "infrared_entity_id": "Infrared emitter"
+        },
+        "data_description": {
+          "infrared_entity_id": "The infrared emitter entity used to send the Uyuni commands."
+        }
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "timer_4h": { "name": "4 hour timer" },
+      "timer_6h": { "name": "6 hour timer" },
+      "timer_8h": { "name": "8 hour timer" },
+      "timer_10h": { "name": "10 hour timer" }
+    }
+  }
+}
