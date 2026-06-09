@@ -1,6 +1,6 @@
 {
   "domain": "uyuni",
-  "name": "Uyuni Tea Lights",
+  "name": "Uyuni Lights",
   "codeowners": ["@hennamann"],
   "config_flow": true,
   "dependencies": ["infrared"],

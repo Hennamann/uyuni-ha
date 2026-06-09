@@ -1,7 +1,8 @@
-# Uyuni Tea Lights for Home Assistant
+# Uyuni Lights for Home Assistant
 
 A [HACS](https://hacs.xyz/) custom integration to control **Uyuni** infrared LED
-tea lights (flameless candles) from Home Assistant.
+lights (flameless candles, tea lights and other Uyuni lights that share the same
+remote) from Home Assistant.
 
 It is built on the [`infrared` entity platform](https://www.home-assistant.io/integrations/infrared/)
 introduced in Home Assistant **2026.4**, the same foundation used by the
@@ -16,7 +17,8 @@ For each configured emitter the integration creates one device with:
 
 | Entity | Type | Description |
 | ------ | ---- | ----------- |
-| Uyuni Tea Lights | `light` | On/off and brightness. Brightness is driven by the relative dim‑up/dim‑down keys, so it is tracked optimistically (assumed state). |
+| Uyuni Lights | `light` | On/off (assumed state, since the lights give no feedback). |
+| Dim up / Dim down | `button` | Nudge the brightness one step. Each press sends exactly one IR command. |
 | 4 / 6 / 8 / 10 hour timer | `button` | Sends the corresponding auto‑off timer command. |
 
 ## Requirements
@@ -34,10 +36,10 @@ depends on — there is nothing extra to install.
 
 1. In HACS, add this repository as a **custom repository** (category
    *Integration*): `https://github.com/hennamann/uyuni-ha`.
-2. Install **Uyuni Tea Lights** and restart Home Assistant.
+2. Install **Uyuni Lights** and restart Home Assistant.
 3. Go to **Settings → Devices & services → Add integration** and search for
-   **Uyuni Tea Lights**.
-4. Pick the infrared emitter that points at your candles and submit.
+   **Uyuni Lights**.
+4. Pick the infrared emitter that points at your lights and submit.
 
 You can add the integration multiple times if you have emitters in different
 rooms.
@@ -45,12 +47,12 @@ rooms.
 ## How dimming works
 
 The Uyuni remote only offers *relative* dimming (dim up / dim down) — there is no
-"set to 50%" command and the lights report nothing back. To present a normal
-brightness slider, the integration assumes a fixed number of brightness steps
-(`BRIGHTNESS_STEPS`, default `10`) and, when you move the slider, sends the right
-number of dim‑up or dim‑down presses from its last assumed level. Because the
-state is assumed, it can drift if you also use the physical remote; just nudge
-the slider to resync.
+"set to 50%" command and the lights report nothing back. Rather than fake an
+absolute brightness slider (which would fire a burst of IR presses and drift out
+of sync), dimming is exposed as two dedicated **Dim up** and **Dim down**
+buttons. Each press sends a single IR command, exactly like the physical remote,
+so the behaviour is predictable and never gets out of step. Drop the buttons next
+to the light in a dashboard card, or call them from automations and scripts.
 
 ## Decoded IR commands
 
