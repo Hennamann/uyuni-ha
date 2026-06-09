@@ -1,4 +1,4 @@
-"""Config flow for the Uyuni Tea Lights integration."""
+"""Config flow for the Uyuni Lights integration."""
 
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ from .const import CONF_INFRARED_ENTITY_ID, DOMAIN
 
 
 class UyuniConfigFlow(ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for Uyuni Tea Lights."""
+    """Handle a config flow for Uyuni Lights."""
 
     VERSION = 1
 
@@ -42,7 +42,7 @@ class UyuniConfigFlow(ConfigFlow, domain=DOMAIN):
                 entry.name or entry.original_name or entity_id if entry else entity_id
             )
             return self.async_create_entry(
-                title=f"Uyuni Tea Lights via {entity_name}", data=user_input
+                title=f"Uyuni Lights via {entity_name}", data=user_input
             )
 
         return self.async_show_form(

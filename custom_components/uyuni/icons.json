@@ -1,6 +1,8 @@
 {
   "entity": {
     "button": {
+      "dim_up": { "default": "mdi:brightness-7" },
+      "dim_down": { "default": "mdi:brightness-5" },
       "timer_4h": { "default": "mdi:timer-outline" },
       "timer_6h": { "default": "mdi:timer-outline" },
       "timer_8h": { "default": "mdi:timer-outline" },

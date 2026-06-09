@@ -1,4 +1,4 @@
-"""Constants for the Uyuni Tea Lights integration."""
+"""Constants for the Uyuni Lights integration."""
 
 DOMAIN = "uyuni"
 
@@ -16,11 +16,3 @@ CMD_TIMER_8H = 0x0C
 CMD_TIMER_10H = 0x10
 CMD_DIM_DOWN = 0x0A
 CMD_DIM_UP = 0x0B
-
-# Number of discrete brightness levels reachable with the dim up/down keys.
-# The lights only expose relative dimming, so brightness is tracked optimistically.
-BRIGHTNESS_STEPS = 10
-
-# Delay (seconds) between consecutive IR transmissions so the lights keep up
-# when several commands are sent in a row (e.g. stepping the brightness).
-IR_SEND_DELAY = 0.2

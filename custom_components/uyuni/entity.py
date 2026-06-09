@@ -1,4 +1,4 @@
-"""Common entity for the Uyuni Tea Lights integration."""
+"""Common entity for the Uyuni Lights integration."""
 
 from __future__ import annotations
 
@@ -21,5 +21,5 @@ class UyuniEntity(Entity):
             identifiers={(DOMAIN, entry.entry_id)},
             name=entry.title,
             manufacturer="Uyuni Lighting",
-            model="LED Tea Light",
+            model="Infrared LED Light",
         )

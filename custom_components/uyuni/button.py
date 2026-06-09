@@ -1,4 +1,4 @@
-"""Button platform for the Uyuni Tea Lights integration."""
+"""Button platform for the Uyuni Lights integration."""
 
 from __future__ import annotations
 
@@ -13,6 +13,8 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from .const import (
+    CMD_DIM_DOWN,
+    CMD_DIM_UP,
     CMD_TIMER_4H,
     CMD_TIMER_6H,
     CMD_TIMER_8H,
@@ -34,6 +36,12 @@ class UyuniButtonEntityDescription(ButtonEntityDescription):
 
 BUTTON_DESCRIPTIONS: tuple[UyuniButtonEntityDescription, ...] = (
     UyuniButtonEntityDescription(
+        key="dim_up", translation_key="dim_up", command_code=CMD_DIM_UP
+    ),
+    UyuniButtonEntityDescription(
+        key="dim_down", translation_key="dim_down", command_code=CMD_DIM_DOWN
+    ),
+    UyuniButtonEntityDescription(
         key="timer_4h", translation_key="timer_4h", command_code=CMD_TIMER_4H
     ),
     UyuniButtonEntityDescription(
@@ -53,7 +61,7 @@ async def async_setup_entry(
     entry: ConfigEntry,
     async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
-    """Set up the Uyuni timer buttons from a config entry."""
+    """Set up the Uyuni buttons from a config entry."""
     infrared_entity_id = entry.data[CONF_INFRARED_ENTITY_ID]
     async_add_entities(
         UyuniButton(entry, infrared_entity_id, description)
@@ -62,7 +70,7 @@ async def async_setup_entry(
 
 
 class UyuniButton(UyuniEntity, InfraredEmitterConsumerEntity, ButtonEntity):
-    """A Uyuni timer button that transmits a single IR command."""
+    """A Uyuni button that transmits a single IR command."""
 
     entity_description: UyuniButtonEntityDescription
 
